@@ -1,0 +1,22 @@
+---
+- name: Playbook for when control statement 
+  hosts: all
+  become: yes
+  tasks:
+    - name: Install httpd on Redhat
+      ansible.builtin.yum:
+        name: httpd
+        state: present
+      when: ansible_os_family == "RedHat"
+
+    - name: Install httpd on Debian 
+      ansible.builtin.apt:
+        name: apache
+        state: present
+      when: ansible_os_family == "Debian"
+
+    - name: Install httpd on Debian 
+      ansible.builtin.apt:
+        name: httpd
+        state: present
+      when: ansible_os_family == "centos"

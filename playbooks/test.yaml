@@ -1,0 +1,61 @@
+---
+- name: First Play 
+  hosts: all
+  become: yes
+  vars:
+    azeem: Hyderabad
+    http_port: 80
+    https_port: 443
+    status: ""
+    kids: ""
+  vars_files:
+    config.yml
+
+  tasks:
+    - name: Display messages from Task 1
+      debug:
+        msg: "Hello World"
+
+  
+    - name: Display messages from Task 2 
+      debug:
+        msg: "Hello India"
+
+    - name: Diplay messages from Taks 3 
+      debug: 
+        msg: "Hello Japan"
+      register: xyz
+      
+    - name: Diplay variable value xyz
+      debug:
+        msg: "{{xyz}}"  
+
+    - name: Display variable inside azeem
+      debug:
+        msg: "{{azeem}}"
+
+    - name: Display Ports info 
+      debug: 
+          msg: the HTTP port is {{http_port}} and HTTPS port is {{https_port}}
+    - name: Display City and State info 
+      debug:
+        msg: The city is {{city}} and state is {{state}}
+    - name: Diplay country and zip code 
+      debug:
+        msg: The country is {{country}} and zip is {{Zip}}
+
+    - name: Display status and kids 
+      debug:
+        msg: the status is {{status}} and kids are {{kids}}
+
+    - name: Display facts and magic variables 
+      debug:
+        msg: "This host is {{inventory_hostname}} and its IP is {{ansible_default_ipv4.address}}"
+
+    - name: Display Son and Daugher names 
+      debug:
+        msg: The son name is {{son}} and daugher name is {{daugher}}
+    
+    - name: Display son age and daugher age 
+      debug: 
+        msg: The son age is {{sonage}} and daugter age is {{daugterage}}
