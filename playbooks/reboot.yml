@@ -1,0 +1,9 @@
+---
+- name: Reboot the server 
+  host: all
+  become: yes
+  tasks: 
+    - name: rebooting server initiated by Ansible
+      reboot:
+        msg: "Rebooting server and wait time ins 600seconds"
+        reboot_timeout: 600
